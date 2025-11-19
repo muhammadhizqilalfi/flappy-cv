@@ -21,7 +21,7 @@ help() {
     echo -e "Using: ./run.sh [COMMAND]\n"
 
     echo "Commands:"
-    echo "  start   : Run the information retrieval system program [Ex: ./run.sh start]"
+    echo "  start   : Run the program [Ex: ./run.sh start]"
     echo "  help    : Show help message [Ex: ./run.sh help]"
     echo "  version : Show version [Ex: ./run.sh version]"
 }
