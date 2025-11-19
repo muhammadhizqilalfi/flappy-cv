@@ -3,7 +3,7 @@ import threading
 class SoundManager:
     def __init__(self, sounds_dict):
         self.sounds = sounds_dict
-        self.looping_status = {name: False for name in sounds_dict}
+        self.looping_status = { name: False for name in sounds_dict }
         self.timeout_timers = {}
         
     def play(self, sound_name, volume = 1.0, loop = False):
