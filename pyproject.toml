@@ -1,0 +1,21 @@
+[project]
+name = "flappy-bird-cv"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "naufalhanif25",email = "naufal.hanif2525@gmail.com"}
+]
+license = {text = "\"MIT\""}
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "pygame (>=2.6.1,<3.0.0)",
+    "opencv-contrib-python (>=4.12.0.88,<5.0.0.0)",
+    "yolo (>=0.3.2,<0.4.0)",
+    "ultralytics (>=8.3.229,<9.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
