@@ -1,0 +1,13 @@
+63f7b34db8d8cdea90c76aacccf841ec
+::res://::1763504537
+icon.svg::CompressedTexture2D::4434035318736883607::1763503813::1763503817::1::::<><><>0<>0<>e5e2a224373954355015a9876ec9967e<>res://.godot/imported/icon.svg-218a8f2b3041327d8a5756f3a245f83b.ctex::
+main.tscn::PackedScene::580150883762426345::1763504496::0::1::::<><><>0<>0<><>::uid://d4afd3vnu000c::::res://assets/bg.png
+::res://assets/::1763504284
+bg.png::CompressedTexture2D::9195048962640885664::1603479869::1763504284::1::::<><><>0<>0<>f5db6e2c04dcee2052defc6c2090baf9<>res://.godot/imported/bg.png-23a59c2e9cba2223a50fa3fe41b70b25.ctex::
+bird1.png::CompressedTexture2D::3336904729814927196::1607023381::1763504284::1::::<><><>0<>0<>14dc4d6a4a9e19ef70e6d823944d9b77<>res://.godot/imported/bird1.png-a83dadb1b9374dc95e0d1b7a95119b58.ctex::
+bird2.png::CompressedTexture2D::8527516966023175348::1603571944::1763504284::1::::<><><>0<>0<>e25c02185a767ca65375222e4a358901<>res://.godot/imported/bird2.png-a9c593802cedb50a9374c8dc66a9b92d.ctex::
+bird3.png::CompressedTexture2D::7940802081492898801::1603571964::1763504284::1::::<><><>0<>0<>a026886931dd3c20bba9e29773e3ac5b<>res://.godot/imported/bird3.png-f9c6b58c0b79dca9a32430fbf9b734b9.ctex::
+ground.png::CompressedTexture2D::3142213820782338938::1695578318::1763504284::1::::<><><>0<>0<>cf99586c86dc75e0281c0673499763b1<>res://.godot/imported/ground.png-328d82a69941a655cdd4638d3455ed11.ctex::
+Mobile - Flappy Bird - Miscellaneous - Version 1.2 Sprites (1).png::CompressedTexture2D::3024509643388328312::1763503924::1763504284::1::::<><><>0<>0<>f632090c06653885d5efd03dd757450e<>res://.godot/imported/Mobile - Flappy Bird - Miscellaneous - Version 1.2 Sprites (1).png-c8a6b0fecc2bae7e6b274b3023884051.ctex::
+pipe.png::CompressedTexture2D::2378364630447834510::1603646527::1763504284::1::::<><><>0<>0<>3143aab9026512624415f21a1c80ac23<>res://.godot/imported/pipe.png-d1f75b14bde36399e8b8e081ce8a470c.ctex::
+restart.png::CompressedTexture2D::8470765225722144174::1603643067::1763504284::1::::<><><>0<>0<>fa6c2f11be0c0fa8ee1b36fa7e953095<>res://.godot/imported/restart.png-e3341f5ab3201ffaa3fc76965a1ab56e.ctex::

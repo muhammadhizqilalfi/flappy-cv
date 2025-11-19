@@ -12,7 +12,7 @@ from lib.sound import SoundManager
 pygame.init()
 pygame.mixer.init()
 
-GLOBAL_SCREEN_WIDTH = 540
+GLOBAL_SCREEN_WIDTH = 1920
 GLOBAL_SCREEN_HEIGHT = 1080
 SCREEN_WIDTH = GLOBAL_SCREEN_WIDTH
 SCREEN_HEIGHT = GLOBAL_SCREEN_HEIGHT
@@ -135,7 +135,7 @@ if __name__ == "__main__":
     
     try:
         score_font = pygame.font.Font(load_font(font_path, "PixelifySans", "Regular"), 32)
-        game_over_font = pygame.font.Font(load_font(font_path, "PixelifySans", "Bold"), 56)
+        game_over_font = pygame.font.Font(load_font(font_path, "PixelifySans", "Bold"), 72)
         start_font = pygame.font.Font(load_font(font_path, "PixelifySans", "Regular"), 32) 
         global_font = pygame.font.Font(load_font(font_path, "PixelifySans", "Regular"), 36) 
     except FileNotFoundError:
@@ -156,15 +156,22 @@ if __name__ == "__main__":
     
     bird, ground, pipes, score, game_over, game_started = init_game()
     restart_button = Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2 + 60, 200, 60, "RESTART", GRASS_GREEN, GRASS_DARK_GREEN, global_font, pygame)
-    start_button = Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2 + 8, 200, 60, "START", GRASS_GREEN, GRASS_DARK_GREEN, start_font, pygame)
-    quit_button = Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2 + 80, 200, 60, "QUIT", BIRD_RED, BIRD_DARK_RED, start_font, pygame)
+    start_button = Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2 + 40, 200, 60, "START", GRASS_GREEN, GRASS_DARK_GREEN, start_font, pygame)
+    quit_button = Button(SCREEN_WIDTH // 2 - 100, SCREEN_HEIGHT // 2 + 150, 200, 60, "QUIT", BIRD_RED, BIRD_DARK_RED, start_font, pygame)
     pipe_spawn_timer = 0
-    pipe_spawn_interval = 1500
+    pipe_spawn_interval = max(1500,2500 - score * 20)
     running = True
+    blink_interval = 500
+    instruction_visible = True
+    last_blink_tim = 0
 
     while running:
         current_time = pygame.time.get_ticks()
         mouse_pos = pygame.mouse.get_pos()
+
+        if current_time - last_blink_tim > blink_interval:
+            instruction_visible = not instruction_visible
+            last_blink_tim = current_time
         
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
@@ -183,10 +190,15 @@ if __name__ == "__main__":
                         running = False
             else:
                 restart_button.check_hover(mouse_pos)
+                quit_button.check_hover(mouse_pos)
 
                 if restart_button.is_clicked(mouse_pos, event):
                     sound_manager.play_timeout("button", volume = 0.7, loop = False, timeout = 1)
                     bird, ground, pipes, score, game_over, game_started = init_game()
+
+                if quit_button.is_clicked(mouse_pos, event):
+                    sound_manager.play_timeout("button", volume = 0.7, loop = False, timeout = 1)
+                    running = False
         
         if not game_over and game_started:
             face_center = webcam.get_centroid()
@@ -244,7 +256,7 @@ if __name__ == "__main__":
         bird.draw(screen)
         
         if game_started:
-            score_text = global_font.render(f"Score: {score}", True, GROUND_DARK_YELLOW)
+            score_text = global_font.render(f"SCORE: {score}", True, GROUND_DARK_YELLOW)
             screen.blit(score_text, (32, 16))
         
         if not game_started and not game_over:
@@ -252,11 +264,12 @@ if __name__ == "__main__":
             overlay.fill((0, 0, 0, 128))
             screen.blit(overlay, (0, 0))
             
-            title_text = game_over_font.render("FLAPPY BIRD CV", True, GROUND_DARK_YELLOW)
+            title_text = game_over_font.render("FLAPPY BIRD CV", True, WHITE)
             screen.blit(title_text, (SCREEN_WIDTH // 2 - title_text.get_width() // 2, SCREEN_HEIGHT // 3))
             
-            instruction_text = global_font.render("Click START to play", True, GRASS_GREEN)
-            screen.blit(instruction_text, (SCREEN_WIDTH // 2 - instruction_text.get_width() // 2, SCREEN_HEIGHT // 2 - 60))
+            if instruction_visible:
+                instruction_text = global_font.render("Click START to play", True, GRASS_GREEN)
+                screen.blit(instruction_text, (SCREEN_WIDTH // 2 - instruction_text.get_width() // 2, SCREEN_HEIGHT // 2 - 60))
 
             start_button.draw(screen, BLACK)
             quit_button.draw(screen, BLACK)
@@ -272,10 +285,13 @@ if __name__ == "__main__":
             game_over_text = game_over_font.render("GAME OVER", True, BIRD_RED)
             screen.blit(game_over_text, (SCREEN_WIDTH // 2 - game_over_text.get_width() // 2, SCREEN_HEIGHT // 3))
             
-            final_score_text = global_font.render(f"Score: {score}", True, GROUND_DARK_YELLOW)
-            screen.blit(final_score_text, (SCREEN_WIDTH // 2 - final_score_text.get_width() // 2, SCREEN_HEIGHT // 2))
+            final_score_text = global_font.render(f"SCORE: {score}", True, GROUND_DARK_YELLOW)
+            screen.blit(final_score_text, (SCREEN_WIDTH // 2 - final_score_text.get_width() // 2, SCREEN_HEIGHT // 2.3))
 
             restart_button.draw(screen, BLACK)
+
+
+            quit_button.draw(screen, BLACK)
 
             sound_manager.stop_all_except(["lose", "button"])
             sound_manager.play("lose")
