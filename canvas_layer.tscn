@@ -1,0 +1,61 @@
+[gd_scene load_steps=8 format=3 uid="uid://clafjkfb5rxid"]
+
+[ext_resource type="Script" uid="uid://cb5oiirdpakcm" path="res://GameOver.gd" id="1_37rai"]
+[ext_resource type="Texture2D" uid="uid://dsxkjbea4tfm1" path="res://assets/restart.png" id="1_tg4cr"]
+[ext_resource type="Texture2D" uid="uid://bjddh5egcc7ai" path="res://assets/Mobile - Flappy Bird - Miscellaneous - Version 1.2 Sprites (1).png" id="2_37rai"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_0qrqu"]
+texture = ExtResource("1_tg4cr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_mx0kw"]
+texture = ExtResource("1_tg4cr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w4oxd"]
+texture = ExtResource("1_tg4cr")
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_fsbdh"]
+texture = ExtResource("2_37rai")
+region_rect = Rect2(392, 56.545654, 102, 27.378677)
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_37rai")
+
+[node name="ScoreLabel" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -85.5
+offset_top = 12.0
+offset_right = 68.5
+offset_bottom = 62.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 36
+text = "SCORE: 0"
+
+[node name="RestartButton" type="Button" parent="."]
+offset_left = 342.0
+offset_top = 550.0
+offset_right = 502.0
+offset_bottom = 613.0
+theme_override_styles/normal = SubResource("StyleBoxTexture_0qrqu")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_mx0kw")
+theme_override_styles/hover = SubResource("StyleBoxTexture_w4oxd")
+
+[node name="GameOver" type="Label" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -68.0
+offset_right = 118.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_fsbdh")
+
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
