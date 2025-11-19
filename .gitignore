@@ -1,0 +1,7 @@
+/bin 
+/flappy_game 
+/include 
+/.godot
+lib64
+pyvenv.cfg
+/lib/python*
